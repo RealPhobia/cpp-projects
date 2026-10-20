@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <cmath>
+#include <algorithm>
 
 struct Point
 {
@@ -23,6 +24,15 @@ class Box
         Point get_dot1() const { return m_dot1; }
         Point get_dot2() const { return m_dot2; }
 
+        int get_dot1x() const { return m_dot1.x; }
+        int get_dot2x() const { return m_dot2.x; }
+
+        int get_dot1y() const { return m_dot1.y; }
+        int get_dot2y() const { return m_dot2.y; }
+
+        int get_dot1z() const { return m_dot1.z; }
+        int get_dot2z() const { return m_dot2.z; }
+
         int get_height() const { return std::abs(m_dot1.y - m_dot2.y); }
         int get_width() const { return std::abs(m_dot1.x - m_dot2.x); }
         int get_depth() const { return std::abs(m_dot1.z - m_dot2.z); }
@@ -44,7 +54,13 @@ void print_dots(const Box& box, const std::string& name)
 
 void check_if_overlap(const Box& box1, const Box& box2)
 {
-    
+    if max(box1.get_dot1x, box1.get_dot2x) >= min(box2.get_dot1x, box2.get_dot2x) || max(box2.get_dot1x, box2.get_dot2x) >= min(box1.get_dot1x, box1.get_dot2x) && max(box1.get_dot1y, box1.get_dot2y) >= min(box2.get_dot1y, box2.get_dot2y) || max(box2.get_dot1y, box2.get_dot2y) >= min(box1.get_dot1y, box1.get_dot2y) && max(box1.get_dot1z, box1.get_dot2z) >= min(box2.get_dot1z, box2.get_dot2z) || max(box2.get_dot1z, box2.get_dot2z) >= min(box1.get_dot1z, box1.get_dot2z) { std::cout << "Overlaps"; }
+    else
+    {
+        std::cout << "Doesn't Overlap";
+    }
+
+
 }
 
 int main()
@@ -58,8 +74,10 @@ int main()
     Box box1{uno, dos};
     Box box2{one, two};
 
-    double x {box1.get_diagonal()};
-    std::cout << x << std::endl;
+
+    check_if_overlap(box1, box2);
+
+
 
     return 0;
 }
