@@ -66,22 +66,6 @@ void check_if_overlap(const Box& box1, const Box& box2)
 
 int main()
 {
-    Point uno{};
-    Point dos{1, 2, 3};
-
-    Point one{7, 8, 9};
-    Point two{3, 6, 9};
-
-    Point overlapping_uno{5, 7, 9};
-    Point overlapping_dos{10, 15, 20};
-
-    Box box1{uno, dos};
-    Box box2{one, two};
-    Box box3{overlapping_uno, overlapping_dos};
-
-    check_if_overlap(box3, box2);
-
-
 
     return 0;
 }
