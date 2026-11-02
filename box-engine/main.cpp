@@ -45,6 +45,7 @@ class Box
     private:
         Point m_dot1{};
         Point m_dot2{};
+};
 
 void print_dots(const Box& box, const std::string& name)
 {
@@ -53,7 +54,7 @@ void print_dots(const Box& box, const std::string& name)
 
 void check_if_overlap(const Box& box1, const Box& box2)
 {
-    std::max(box1.get_dot1x(), box1.get_dot2x()) >= std::min(box2.get_dot1x(), box2.get_dot2x()
+    if (std::max(box1.get_dot1x(), box1.get_dot2x()) >= std::min(box2.get_dot1x(), box2.get_dot2x()) && std::max(box1.get_dot1y(), box1.get_dot2y()) >= std::min(box2.get_dot1y(), box2.get_dot2y()) && std::max(box1.get_dot1z(), box1.get_dot2z()) >= std::min(box2.get_dot1z(), box2.get_dot2z()))
         { std::cout << "Overlaps"; }
     else
     {
@@ -71,11 +72,14 @@ int main()
     Point one{7, 8, 9};
     Point two{3, 6, 9};
 
+    Point overlapping_uno{5, 7, 9};
+    Point overlapping_dos{10, 15, 20};
+
     Box box1{uno, dos};
     Box box2{one, two};
+    Box box3{overlapping_uno, overlapping_dos};
 
-
-    check_if_overlap(box1, box2);
+    check_if_overlap(box3, box2);
 
 
 
